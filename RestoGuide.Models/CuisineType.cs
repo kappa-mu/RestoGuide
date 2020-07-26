@@ -6,6 +6,7 @@ namespace RestoGuide.Entities
 {
     public enum CuisineType
     {
+        None,
         Bengali,
         Chettinad,
         Chinese,
