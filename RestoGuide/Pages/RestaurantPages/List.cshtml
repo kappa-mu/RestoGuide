@@ -1,0 +1,58 @@
+﻿@page
+@model RestoGuide.Pages.RestaurantPages.ListModel
+@{
+    ViewData["Title"] = "List of Restaurants";
+}
+
+    <h1>@ViewData["Title"]</h1>
+
+    <h3>@Model.Message</h3>
+
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" 
+                       class="form-control" 
+                       asp-for="SearchString" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                </span>
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <tr>
+                <td>
+                    @restaurant.Name
+                </td>
+                <td>
+                    @restaurant.Location
+                </td>
+                <td>
+                    @restaurant.Name
+                </td>
+                <td>
+                    <a class="btn btn-lg"
+                       asp-page="./Detail"
+                       asp-route-RestaurantId=@restaurant.Id>
+                        <i class="fas fa-search-plus"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-lg"
+                       asp-page="./Edit"
+                       asp-route-RestaurantID="@restaurant.Id">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <a asp-page="./Edit" class="btn btn-primary">Create New Restaurant</a>
